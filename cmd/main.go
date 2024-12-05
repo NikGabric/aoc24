@@ -12,4 +12,5 @@ func main() {
 	day02.Task01()
 	day02.Task02()
 	day03.Task01()
+	day03.Task02()
 }
