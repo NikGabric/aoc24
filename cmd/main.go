@@ -4,6 +4,7 @@ import (
 	day01 "github.com/NikGabric/aoc24/01"
 	day02 "github.com/NikGabric/aoc24/02"
 	day03 "github.com/NikGabric/aoc24/03"
+	day04 "github.com/NikGabric/aoc24/04"
 )
 
 func main() {
@@ -13,4 +14,6 @@ func main() {
 	day02.Task02()
 	day03.Task01()
 	day03.Task02()
+	day04.Task01()
+	day04.Task02()
 }
