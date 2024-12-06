@@ -10,34 +10,14 @@ import (
 	"github.com/NikGabric/aoc24/helpers"
 )
 
-func Task01() {
+func Tasks() {
 	f, err := os.ReadFile("./02/in.txt")
 	helpers.HandleErr(err)
 
 	scanner := bufio.NewScanner(strings.NewReader(string(f)))
 	safeCount := 0
-	for scanner.Scan() {
-		strVals := strings.Fields(scanner.Text())
-		var vals []int
-		for _, val := range strVals {
-			v, _ := strconv.Atoi(val)
-			vals = append(vals, v)
-		}
-
-		if isSafe(vals) {
-			safeCount++
-		}
-	}
-
-	fmt.Println(safeCount)
-}
-
-func Task02() {
-	f, err := os.ReadFile("./02/in.txt")
-	helpers.HandleErr(err)
-
-	scanner := bufio.NewScanner(strings.NewReader(string(f)))
-	safeCount := 0
+	sol1 := 0
+	sol2 := 0
 	for scanner.Scan() {
 		strVals := strings.Fields(scanner.Text())
 		var vals []int
@@ -51,16 +31,19 @@ func Task02() {
 		} else {
 			for i := 0; i < len(vals); i++ {
 				newVals := helpers.Remove(vals, i)
-				safe := isSafe(newVals)
-				if safe {
-					safeCount++
+				if isSafe(newVals) {
+					sol2++
 					break
 				}
 			}
 		}
+
 	}
 
-	fmt.Println(safeCount)
+	sol1 = safeCount
+	sol2 = safeCount + sol2
+	fmt.Println(sol1)
+	fmt.Println(sol2)
 }
 
 func isSafe(vals []int) bool {

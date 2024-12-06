@@ -17,7 +17,7 @@ func HandleErr(e error) {
 	}
 }
 
-func Task01() {
+func Tasks() {
 	f, err := os.ReadFile("./01/in.txt")
 	HandleErr(err)
 
@@ -32,6 +32,14 @@ func Task01() {
 		list2 = append(list2, v2)
 	}
 
+	sol1 := solve1(list1, list2)
+	fmt.Println(sol1)
+
+	sol2 := solve2(list1, list2)
+	fmt.Println(sol2)
+}
+
+func solve1(list1, list2 []int) int {
 	sum := 0
 	l := len(list1)
 	for i := 0; i < l; i++ {
@@ -42,24 +50,10 @@ func Task01() {
 		list2 = helpers.Remove(list2, helpers.IndexOf(list2, min2))
 	}
 
-	fmt.Println(sum)
+	return (sum)
 }
 
-func Task02() {
-	f, err := os.ReadFile("./01/in.txt")
-	HandleErr(err)
-
-	var list1, list2 []int
-	scanner := bufio.NewScanner(strings.NewReader(string(f)))
-	for scanner.Scan() {
-		values := strings.Fields(scanner.Text())
-		v1, _ := strconv.Atoi(values[0])
-		v2, _ := strconv.Atoi(values[1])
-
-		list1 = append(list1, v1)
-		list2 = append(list2, v2)
-	}
-
+func solve2(list1, list2 []int) int {
 	score := 0
 	for i := 0; i < len(list1); i++ {
 		leftItem := list1[i]
@@ -72,5 +66,5 @@ func Task02() {
 		score += leftItem * count
 	}
 
-	fmt.Println(score)
+	return score
 }
